@@ -35,6 +35,7 @@ requirements:
     - freetype        # [build_platform != target_platform]
     - libpng          # [build_platform != target_platform]
     # needed for pkg-config/development files:
+    - harfbuzz        # [build_platform != target_platform]
     - xorg-xorgproto  # [build_platform != target_platform]
     - zlib            # [build_platform != target_platform]
   host:
@@ -45,6 +46,7 @@ requirements:
     - harfbuzz
     - fontconfig
     - freetype
+    - harfbuzz
     - libpng
     - xorg-xorgproto
     - zlib
@@ -52,6 +54,7 @@ requirements:
 test:
   requires:
     - expat  # needed for the pkg-config test
+    - harfbuzz  # needed for gobject-introspection loading
     - pkg-config
     - pygobject
   commands:
