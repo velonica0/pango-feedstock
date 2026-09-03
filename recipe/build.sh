@@ -49,6 +49,11 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
     # Unset them as we're ok with builds that are either slow or non-portable
     unset CFLAGS
     unset CPPFLAGS
+    if [[ "$target_platform" = linux-riscv64 ]]; then
+        # the riscv64 CXXFLAGS carry -march=rv64imafdc -mabi=lp64d, which the
+        # x86_64 build compiler rejects when meson probes the C++ linker
+        unset CXXFLAGS
+    fi
     export host_alias=$build_alias
     export PKG_CONFIG_PATH=$BUILD_PREFIX/lib/pkgconfig
 
